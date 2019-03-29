@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<head>
+    <title>Redis</title>
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous"></script>
+    <script>
+        // var para = document.createElement("p");
+        // var node = document.createTextNode(JSON.stringify(data));
+        // para.appendChild(node);
+        //
+        // var element = document.getElementById("div1");
+        // element.appendChild(para);
+        function getFreeSpins() {
+            $.ajax({
+                type: 'GET',
+                url: '/redis/take',
+                error: function () {
+                    console.warn('ajax error response');
+                },
+                success: function (data) {
+                    console.log(data);
+                    getFreeSpins();
+                }
+            });
+        }
+
+        getFreeSpins();
+    </script>
+</head>
+<body>
+    <h1>Redis</h1>
+    <div id="div1"></div>
+</body>
