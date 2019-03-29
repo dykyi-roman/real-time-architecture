@@ -17,7 +17,7 @@ centrifuge.on('error', function (e) {
 centrifuge.subscribe('public', function (message) {
     var para = document.createElement('p');
     var obj = JSON.parse(message.data);
-    // var node = document.createTextNode(obj.time);
+    var node = document.createTextNode(obj.time);
     para.appendChild(node);
     
     var element = document.getElementById('div1');

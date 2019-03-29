@@ -6,12 +6,6 @@
             integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
             crossorigin="anonymous"></script>
     <script>
-        // var para = document.createElement("p");
-        // var node = document.createTextNode(JSON.stringify(data));
-        // para.appendChild(node);
-        //
-        // var element = document.getElementById("div1");
-        // element.appendChild(para);
         function getFreeSpins() {
             $.ajax({
                 type: 'GET',
@@ -20,7 +14,14 @@
                     console.warn('ajax error response');
                 },
                 success: function (data) {
-                    console.log(data);
+                    if (data.length > 1) {
+                        var para = document.createElement('p');
+                        var node = document.createTextNode(JSON.stringify(data));
+                        para.appendChild(node);
+                        var element = document.getElementById('div1');
+                        element.appendChild(para);
+                    }
+
                     getFreeSpins();
                 }
             });

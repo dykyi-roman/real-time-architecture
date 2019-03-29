@@ -1,12 +1,14 @@
-#Web real time architecture
+# Web Real-Time Architecture
 
 1) [Mercure (SSE)](#one)
 
 2) [Centrifugo (WebSocket)](#two)
 
-3) [Redis BLPOP](#three)
+3) [Redis (Long Polling)](#three)
 
-4) [Third party resources](#four)
+4) [Pusher.com](#four)
+
+5) [WebRTC](#five)
 
 ## <a name="one"><h1>Mercure (SSE)</h1></a>
 
@@ -56,10 +58,9 @@ Centrifugo this is a real-time messaging server and its friends. Centrifugal org
 
 + Docker support
 + Open source (MIT)
-+ Works on Linux, MacOS and Windows
-+ Administrative web interface
 + No lib nor SDK
 + JWT-based authorization
++ Single persistent connection
 + Scale with Redis PUB/SUB, Redis Sentinel for high availability
 + History information for channels
 + Events channels support
@@ -78,6 +79,8 @@ Demo: https://centrifugo.herokuapp.com/#/ && https://centrifugo2.herokuapp.com/
 
 ## <a name="three"><h1>Redis BLPOP</h1></a>
 
+### Description
+
 LPUSH - Insert all the specified values at the head of the list stored at key. If key does not exist, it is created as empty list before performing the push operations. When key holds a value that is not a list, an error is returned.
 
 BLPOP - is a blocking list pop primitive. It is the blocking version of LPOP because it blocks the connection when there are no elements to pop from any of the given lists. An element is popped from the head of the first list that is non-empty, with the given keys being checked in the order that they are given.
@@ -90,7 +93,8 @@ BLPOP - is a blocking list pop primitive. It is the blocking version of LPOP bec
 
 + Docker support
 + Open source (MIT)
-+ Works on Linux, MacOS and Windows
++ No single persistent connection
++ Automatic HTTP/2 and HTTPS support
 + Connections can be established via TCP/IP
 
 ### Sources
@@ -99,15 +103,15 @@ Documentation: https://redis.io/commands/BLPOP
 
 Example: https://www.tutorialspoint.com/redis/lists_blpop.htm
 
-## <a name="four"><h1>Third party resources</h1></a>
+## <a name="four"><h1>Pusher.com</h1></a>
 
-### Pusher (WebSocket)
+### Description
 
 Easily build scalable realtime graphs, geotracking, multiplayer games, and more in your web and mobile apps with our hosted pub/sub messaging API.
 
 <img src="https://realtimeapi.io/wp-content/uploads/2017/09/trigger_events-1.png" width="350">
 
-#### Pros & Cons
+### Pros & Cons
 
 + Github Fork(213), Star(846)
 
@@ -118,7 +122,7 @@ Easily build scalable realtime graphs, geotracking, multiplayer games, and more 
 + Available support 
 + Available dashboard
 
-#### Sources
+### Sources
 
 Website: www.pusher.com
 
@@ -126,13 +130,15 @@ Component: https://github.com/pusher/pusher-http-php
 
 Documentation: https://pusher.com/docs
 
-### Pubnub (TLS)
+## <a name="five"><h1>WebRTC</h1></a>
 
-Website: https://www.pubnub.com/products/realtime-messaging/
+### Description
 
-Documentation: https://www.pubnub.com/docs
+WebRTC (Web Real-Time Communication) is a free, open-source project that provides web browsers and mobile applications with real-time communication (RTC) via simple application programming interfaces (APIs). It allows audio and video communication to work inside web pages by allowing direct peer-to-peer communication. It's suitable for data, audio and video.
 
-Demo: https://www.pubnub.com/schedule-a-demo/
+### Sources
+
+Documentation: https://webrtc.org/
 
 ## JWT
 
@@ -144,10 +150,7 @@ Website: https://jwt.io/
 
 Documentation: https://jwt.io/introduction/
 
-## Other
+## More
 
-https://www.smartspate.com/centrifugo-v2-the-future-of-the-real-time-server/
-
-https://www.quora.com/What-is-the-best-way-to-push-real-time-data-to-a-mobile-app-from-a-backend
-
+Centrafugo: https://www.smartspate.com/centrifugo-v2-the-future-of-the-real-time-server/
 Redis: https://thenewstack.io/how-to-build-intelligence-into-your-session-stores-putting-it-all-together/
