@@ -4,7 +4,7 @@
 
 2) [Centrifugo (WebSocket)](#two)
 
-3) [Redis (Long Polling)](#three)
+3) [Long Polling + Redis](#three)
 
 4) [Pusher.com](#four)
 
@@ -20,9 +20,7 @@ Mercure is a protocol allowing to push data updates to web browsers and other HT
 
 ### Pros & Cons
 
-+ Github Fork(49), Star(1190)
-
-+ Docker support
++ Docker image avalible
 + Open source (AGPL)
 + Fast, written in Go
 + No lib nor SDK
@@ -32,7 +30,7 @@ Mercure is a protocol allowing to push data updates to web browsers and other HT
 + Built-in connection re-establishment 
 + Supports GraphQL
 + Message encryption support
-+ Can work with old browsers (IE7+)
++ Can work with old browsers (IE7+) Using EventSource polifill
 
 ### Sources
 
@@ -48,15 +46,12 @@ Demo: https://demo.mercure.rocks/
 
 ### Description
 
-Centrifugo this is a real-time messaging server and its friends. Centrifugal organization provides a set of tools to add real-time features to your web/mobile/desktop application. It brings together several repositories linked by a common purpose – give you a complete and ready to use solution when you want to add real-time events into your application.
+Centrifugo - is a real-time messaging server and its friends. Centrifugal organization provides a set of tools to add real-time features to your web/mobile/desktop application. It brings together several repositories linked by a common purpose – give you a complete and ready to use solution when you want to add real-time events into your application.
 
 <img src="https://github.com/dykyi-roman/centrifugo-service/blob/master/docs/image.png" width="350">
 
 ### Pros & Cons
-
-+ Github Fork(292), Star(3407)
-
-+ Docker support
++ Docker image avalible
 + Open source (MIT)
 + No lib nor SDK
 + JWT-based authorization
@@ -77,7 +72,7 @@ Documentation v2: https://github.com/oleh-ozimok/php-centrifugo
 
 Demo: https://centrifugo.herokuapp.com/#/ && https://centrifugo2.herokuapp.com/
 
-## <a name="three"><h1>Redis BLPOP</h1></a>
+## <a name="three"><h1>Long Polling + Redis</h1></a>
 
 ### Description
 
@@ -88,10 +83,7 @@ BLPOP - is a blocking list pop primitive. It is the blocking version of LPOP bec
 <img src="https://storage.googleapis.com/cdn.thenewstack.io/media/2018/05/ebd5ebac-kd31.png" width="350">
 
 ### Pros & Cons
-
-+ Github Fork(771), Star(5445)
-
-+ Docker support
++ Docker image avalible
 + Open source (MIT)
 + No single persistent connection
 + Automatic HTTP/2 and HTTPS support
@@ -112,9 +104,6 @@ Easily build scalable realtime graphs, geotracking, multiplayer games, and more 
 <img src="https://realtimeapi.io/wp-content/uploads/2017/09/trigger_events-1.png" width="350">
 
 ### Pros & Cons
-
-+ Github Fork(213), Star(846)
-
 + No lib nor SDK
 + Max Concurent Connections: 100 - 10 000
 + Free Limit per/day: 200 000 - 20 000 000 
