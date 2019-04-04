@@ -35,14 +35,10 @@ Mercure is a protocol allowing to push data updates to web browsers and other HT
 + Can work with old browsers (IE7+) Using EventSource polifill
 
 ### Sources
-
-Component: https://github.com/dunglas/mercure
-
-Protokol: https://github.com/dunglas/mercure/blob/master/spec/mercure.md
-
-Website: https://mercure.rocks
-
-Demo: https://demo.mercure.rocks/
+* Component: https://github.com/dunglas/mercure
+* Protokol: https://github.com/dunglas/mercure/blob/master/spec/mercure.md
+* Website: https://mercure.rocks
+* Demo: https://demo.mercure.rocks/
 
 ## <a name="two"><h1>Centrifugo (WebSocket)</h1></a>
 
@@ -65,14 +61,10 @@ Centrifugo - is a real-time messaging server and its friends. Centrifugal organi
 + Available dashboard
 
 ### Sources
-
-Component: https://github.com/centrifugal/centrifugo
-
-Documentation v1: https://centrifugal.github.io/centrifugo/
-
-Documentation v2: https://github.com/oleh-ozimok/php-centrifugo
-
-Demo: https://centrifugo.herokuapp.com/#/ && https://centrifugo2.herokuapp.com/
+* Component: https://github.com/centrifugal/centrifugo
+* Documentation v1: https://centrifugal.github.io/centrifugo/
+* Documentation v2: https://github.com/oleh-ozimok/php-centrifugo
+* Demo: https://centrifugo.herokuapp.com/#/ && https://centrifugo2.herokuapp.com/
 
 ## <a name="three"><h1>Long Polling + Redis</h1></a>
 
@@ -92,10 +84,8 @@ BLPOP - is a blocking list pop primitive. It is the blocking version of LPOP bec
 + Connections can be established via TCP/IP
 
 ### Sources
-
-Documentation: https://redis.io/commands/BLPOP
-
-Example: https://www.tutorialspoint.com/redis/lists_blpop.htm
+* Documentation: https://redis.io/commands/BLPOP
+* Example: https://www.tutorialspoint.com/redis/lists_blpop.htm
 
 ## <a name="four"><h1>Pusher.com</h1></a>
 
@@ -114,12 +104,9 @@ Easily build scalable realtime graphs, geotracking, multiplayer games, and more 
 + Available dashboard
 
 ### Sources
-
-Website: www.pusher.com
-
-Component: https://github.com/pusher/pusher-http-php
-
-Documentation: https://pusher.com/docs
+* Website: www.pusher.com
+* Component: https://github.com/pusher/pusher-http-php
+* Documentation: https://pusher.com/docs
 
 ## <a name="five"><h1>RabbiMQ (STOMP)</h1></a>
 
@@ -141,12 +128,9 @@ RabbitMQ is an open-source message-broker software (sometimes called message-ori
 + Automated connection recovery mechanisms
 
 ### Sources
-
-Website: https://www.rabbitmq.com/
-
-Component: https://github.com/php-amqplib/php-amqplib
-
-Documentation: https://www.rabbitmq.com/documentation.html
+* Website: https://www.rabbitmq.com/
+* Component: https://github.com/php-amqplib/php-amqplib
+* Documentation: https://www.rabbitmq.com/documentation.html
 
 ## <a name="six"><h1>WebRTC</h1></a>
 
@@ -163,10 +147,8 @@ Documentation: https://webrtc.org/
 JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. Although JWTs can be encrypted to also provide secrecy between parties, we will focus on signed tokens.
 
 ### Sources
-
-Website: https://jwt.io/
-
-Documentation: https://jwt.io/introduction/
+* Website: https://jwt.io/
+* Documentation: https://jwt.io/introduction/
 
 ## Author
 [Dykyi Roman](https://www.linkedin.com/in/roman-dykyi-43428543/), e-mail: [mr.dukuy@gmail.com](mailto:mr.dukuy@gmail.com)
