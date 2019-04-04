@@ -26,6 +26,7 @@ $token = (new \App\Domain\Centrifugo\JWTToken())->generateToken();
 
 <button class="connect" onclick="connect()">Connect</button>
 <button class="disconnect" onclick="disconnect()">Disconnect</button>
+<button onclick="getCalculation()">Calculate</button>
 <div class="status"></div>
 <h1>Centrifugal</h1>
 <div id="div1"></div>

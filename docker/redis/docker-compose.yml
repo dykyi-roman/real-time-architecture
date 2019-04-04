@@ -2,7 +2,7 @@ version: '3'
 services:
     redis:
         image: bitnami/redis
-	environment:
+        environment:
             - ALLOW_EMPTY_PASSWORD=yes
         ports:
             - "637980:6379"

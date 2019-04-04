@@ -126,6 +126,9 @@
     "paragonie/sodium_compat": {
         "version": "v1.9.1"
     },
+    "php-amqplib/php-amqplib": {
+        "version": "v2.9.1"
+    },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
     },

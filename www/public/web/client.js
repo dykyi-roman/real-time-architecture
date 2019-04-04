@@ -14,12 +14,24 @@ centrifuge.on('error', function (e) {
     console.log(e);
 });
 
-centrifuge.subscribe('public', function (message) {
-    var para = document.createElement('p');
-    var obj = JSON.parse(message.data);
-    var node = document.createTextNode(obj.time);
-    para.appendChild(node);
+function getCalculation() {
     
-    var element = document.getElementById('div1');
-    element.appendChild(para);
+    if (timeArr !== undefined || timeArr.length !== 0) {
+        console.log(timeArr.pop() - timeArr[0]);
+        timeArr = [];
+    }
+}
+
+var timeArr=[];
+
+centrifuge.subscribe('public', function (message) {
+    timeArr.push(new Date().getTime());
+    console.log('x');
+    // var para = document.createElement('p');
+    // var obj = JSON.parse(message.data);
+    // var node = document.createTextNode(obj.time);
+    // para.appendChild(node);
+    //
+    // var element = document.getElementById('div1');
+    // element.appendChild(para);
 });
