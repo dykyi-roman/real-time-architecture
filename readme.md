@@ -8,7 +8,9 @@
 
 4) [Pusher.com](#four)
 
-5) [WebRTC](#five)
+5) [RabbitMQ](#five)
+
+6) [WebRTC](#six)
 
 ## <a name="one"><h1>Mercure (SSE)</h1></a>
 
@@ -119,7 +121,34 @@ Component: https://github.com/pusher/pusher-http-php
 
 Documentation: https://pusher.com/docs
 
-## <a name="five"><h1>WebRTC</h1></a>
+## <a name="five"><h1>RabbiMQ</h1></a>
+
+### Description
+
+RabbitMQ is an open-source message-broker software (sometimes called message-oriented middleware) that originally implemented the Advanced Message Queuing Protocol (AMQP) and has since been extended with a plug-in architecture to support Streaming Text Oriented Messaging Protocol (STOMP), Message Queuing Telemetry Transport (MQTT), and other protocols.
+
+<img src="https://www.rabbitmq.com/img/tutorials/python-two.png" width="350">
+
+### Pros & Cons
++ Very fasten
++ High performance
++ Docker image avalible
++ Asynchronous messag delivery
++ Need a lib
++ Difficult to maintain
++ Available dashboard
++ Gateways for AMQP, HTTP, STOMP, and MQTT protocols
++ Automated connection recovery mechanisms
+
+### Sources
+
+Website: https://www.rabbitmq.com/
+
+Component: https://github.com/php-amqplib/php-amqplib
+
+Documentation: https://www.rabbitmq.com/documentation.html
+
+## <a name="six"><h1>WebRTC</h1></a>
 
 ### Description
 
@@ -139,7 +168,5 @@ Website: https://jwt.io/
 
 Documentation: https://jwt.io/introduction/
 
-## More
-
-Centrafugo: https://www.smartspate.com/centrifugo-v2-the-future-of-the-real-time-server/
-Redis: https://thenewstack.io/how-to-build-intelligence-into-your-session-stores-putting-it-all-together/
+## Author
+[Dykyi Roman](https://www.linkedin.com/in/roman-dykyi-43428543/), e-mail: [mr.dukuy@gmail.com](mailto:mr.dukuy@gmail.com)
