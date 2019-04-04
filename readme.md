@@ -121,11 +121,12 @@ RabbitMQ is an open-source message-broker software (sometimes called message-ori
 + High performance
 + Docker image avalible
 + Asynchronous messag delivery
-+ Need a lib
-+ Difficult to maintain
 + Available dashboard
 + Gateways for AMQP, HTTP, STOMP, and MQTT protocols
 + Automated connection recovery mechanisms
++ Need a lib
++ Difficult to maintain
++ Not secure (have an open user credential)
 
 ### Sources
 * Website: https://www.rabbitmq.com/
