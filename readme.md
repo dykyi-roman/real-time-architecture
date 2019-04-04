@@ -8,7 +8,7 @@
 
 4) [Pusher.com](#four)
 
-5) [RabbitMQ](#five)
+5) [RabbitMQ (STOMP)](#five)
 
 6) [WebRTC](#six)
 
@@ -121,7 +121,7 @@ Component: https://github.com/pusher/pusher-http-php
 
 Documentation: https://pusher.com/docs
 
-## <a name="five"><h1>RabbiMQ</h1></a>
+## <a name="five"><h1>RabbiMQ (STOMP)</h1></a>
 
 ### Description
 
