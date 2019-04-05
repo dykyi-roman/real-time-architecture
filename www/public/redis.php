@@ -16,7 +16,7 @@
             }
         }
 
-        function getFreeSpins() {
+        function fetch() {
             $.ajax({
                 type: 'GET',
                 url: '/redis/take',
@@ -34,15 +34,15 @@
                         // element.appendChild(para);
                     }
 
-                    getFreeSpins();
+                    fetch();
                 }
             });
         }
-        getFreeSpins();
+        fetch();
     </script>
 </head>
 <body>
     <h1>Redis</h1>
     <div id="div1"></div>
-    <button onclick="getCalculation(timeArr)">Calculate</button>
+    <button onclick="getCalculation()">Calculate</button>
 </body>

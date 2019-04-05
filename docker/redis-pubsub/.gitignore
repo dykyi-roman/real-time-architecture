@@ -1,0 +1,4 @@
+# Intellij IDEA configs
+.git
+.idea
+node_modules

@@ -1,0 +1,27 @@
+{
+  "name": "RedisPubSub",
+  "version": "1.0.0",
+  "description": "Redis PubSub, NodeJS, and Socket.io",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/clivern/Redis-PubSub.git"
+  },
+  "keywords": [
+    "Redis",
+    "NodeJS",
+    "Socket.io"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/clivern/Redis-PubSub/issues"
+  },
+  "homepage": "https://github.com/clivern/Redis-PubSub",
+  "dependencies": {
+    "express": "^4.14.0",
+    "redis": "^2.6.3",
+    "socket.io": "^1.5.1"
+  }
+}

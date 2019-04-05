@@ -5,4 +5,4 @@ services:
         environment:
             - ALLOW_EMPTY_PASSWORD=yes
         ports:
-            - "637980:6379"
+            - "6379:6379"
