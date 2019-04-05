@@ -8,7 +8,9 @@
 
 4) [Pusher.com](#four)
 
-5) [WebRTC](#five)
+5) [RabbitMQ (STOMP)](#five)
+
+6) [WebRTC](#six)
 
 ## <a name="one"><h1>Mercure (SSE)</h1></a>
 
@@ -33,14 +35,10 @@ Mercure is a protocol allowing to push data updates to web browsers and other HT
 + Can work with old browsers (IE7+) Using EventSource polifill
 
 ### Sources
-
-Component: https://github.com/dunglas/mercure
-
-Protokol: https://github.com/dunglas/mercure/blob/master/spec/mercure.md
-
-Website: https://mercure.rocks
-
-Demo: https://demo.mercure.rocks/
+* Component: https://github.com/dunglas/mercure
+* Protokol: https://github.com/dunglas/mercure/blob/master/spec/mercure.md
+* Website: https://mercure.rocks
+* Demo: https://demo.mercure.rocks/
 
 ## <a name="two"><h1>Centrifugo (WebSocket)</h1></a>
 
@@ -63,14 +61,10 @@ Centrifugo - is a real-time messaging server and its friends. Centrifugal organi
 + Available dashboard
 
 ### Sources
-
-Component: https://github.com/centrifugal/centrifugo
-
-Documentation v1: https://centrifugal.github.io/centrifugo/
-
-Documentation v2: https://github.com/oleh-ozimok/php-centrifugo
-
-Demo: https://centrifugo.herokuapp.com/#/ && https://centrifugo2.herokuapp.com/
+* Component: https://github.com/centrifugal/centrifugo
+* Documentation v1: https://centrifugal.github.io/centrifugo/
+* Documentation v2: https://github.com/oleh-ozimok/php-centrifugo
+* Demo: https://centrifugo.herokuapp.com/#/ && https://centrifugo2.herokuapp.com/
 
 ## <a name="three"><h1>Long Polling + Redis</h1></a>
 
@@ -90,10 +84,8 @@ BLPOP - is a blocking list pop primitive. It is the blocking version of LPOP bec
 + Connections can be established via TCP/IP
 
 ### Sources
-
-Documentation: https://redis.io/commands/BLPOP
-
-Example: https://www.tutorialspoint.com/redis/lists_blpop.htm
+* Documentation: https://redis.io/commands/BLPOP
+* Example: https://www.tutorialspoint.com/redis/lists_blpop.htm
 
 ## <a name="four"><h1>Pusher.com</h1></a>
 
@@ -112,14 +104,36 @@ Easily build scalable realtime graphs, geotracking, multiplayer games, and more 
 + Available dashboard
 
 ### Sources
+* Website: www.pusher.com
+* Component: https://github.com/pusher/pusher-http-php
+* Documentation: https://pusher.com/docs
 
-Website: www.pusher.com
+## <a name="five"><h1>RabbiMQ (STOMP)</h1></a>
 
-Component: https://github.com/pusher/pusher-http-php
+### Description
 
-Documentation: https://pusher.com/docs
+RabbitMQ is an open-source message-broker software (sometimes called message-oriented middleware) that originally implemented the Advanced Message Queuing Protocol (AMQP) and has since been extended with a plug-in architecture to support Streaming Text Oriented Messaging Protocol (STOMP), Message Queuing Telemetry Transport (MQTT), and other protocols.
 
-## <a name="five"><h1>WebRTC</h1></a>
+<img src="https://www.rabbitmq.com/img/tutorials/python-two.png" width="350">
+
+### Pros & Cons
++ Very fasten
++ High performance
++ Docker image avalible
++ Asynchronous messag delivery
++ Available dashboard
++ Gateways for AMQP, HTTP, STOMP, and MQTT protocols
++ Automated connection recovery mechanisms
++ Need a lib
++ Difficult to maintain
++ Not secure (have an open user credential)
+
+### Sources
+* Website: https://www.rabbitmq.com/
+* Component: https://github.com/php-amqplib/php-amqplib
+* Documentation: https://www.rabbitmq.com/documentation.html
+
+## <a name="six"><h1>WebRTC</h1></a>
 
 ### Description
 
@@ -134,12 +148,8 @@ Documentation: https://webrtc.org/
 JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. Although JWTs can be encrypted to also provide secrecy between parties, we will focus on signed tokens.
 
 ### Sources
+* Website: https://jwt.io/
+* Documentation: https://jwt.io/introduction/
 
-Website: https://jwt.io/
-
-Documentation: https://jwt.io/introduction/
-
-## More
-
-Centrafugo: https://www.smartspate.com/centrifugo-v2-the-future-of-the-real-time-server/
-Redis: https://thenewstack.io/how-to-build-intelligence-into-your-session-stores-putting-it-all-together/
+## Author
+[Dykyi Roman](https://www.linkedin.com/in/roman-dykyi-43428543/), e-mail: [mr.dukuy@gmail.com](mailto:mr.dukuy@gmail.com)
