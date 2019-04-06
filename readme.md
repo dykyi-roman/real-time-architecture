@@ -1,16 +1,22 @@
 # Web Real-Time Architecture
 
-1) [Mercure (SSE)](#one)
+[Mercure (SSE)](#one)
 
-2) [Centrifugo (WebSocket)](#two)
+[Centrifugo (WebSocket)](#two)
 
-3) [Long Polling + Redis](#three)
+[Long Polling + Redis](#three)
 
-4) [Pusher.com](#four)
+[Pusher.com](#four)
 
-5) [RabbitMQ (STOMP)](#five)
+[RabbitMQ (STOMP)](#five)
 
-6) [WebRTC](#six)
+[Redis + Node](#six)
+
+[WebRTC](#seven)
+
+[JWT](#jwt)
+
+[Benchmark](#benchmark)
 
 ## <a name="one"><h1>Mercure (SSE)</h1></a>
 
@@ -133,7 +139,11 @@ RabbitMQ is an open-source message-broker software (sometimes called message-ori
 * Component: https://github.com/php-amqplib/php-amqplib
 * Documentation: https://www.rabbitmq.com/documentation.html
 
-## <a name="six"><h1>WebRTC</h1></a>
+## <a name="six"><h1>Redis + Node</h1></a>
+
+...
+
+## <a name="seven"><h1>WebRTC</h1></a>
 
 ### Description
 
@@ -143,7 +153,18 @@ WebRTC (Web Real-Time Communication) is a free, open-source project that provide
 
 Documentation: https://webrtc.org/
 
-## JWT
+## <a name="benchmark"><h1>Benchmark</h1></a>
+
+| n=10, t=sec           | Send (10/100/1000)        | Receive (10/100/1000)     |
+| --------------------- |:-------------------------:| -------------------------:|
+| Centrafugo (Websoket) |  0.0162 / 0.1516 / 1.5486 | 0.0133 / 0.1872 / 2.239   |
+| Mercure (SSE)         |  0.0499 / 0.5267 / 5.3176 | 0.0491 / 0.5456 / 5.5930  |
+| Redis (tcp)           |  0.0056 / 0.0240 / 0.1770 | 0.9144 / 8.9594 / 84.7943 |
+| Redis + Node(Websoket)|  0.0051 / 0.0301 / 0.3255 | 0.0049 / 0.1176 / 0.7557  |
+| Pusher (Websoket)     |  1.0816 / 7.8452 / 79.8540| 0.6328 / 7.6503 / 73.116  |
+| RabbitMQ(tcp)         |  0.0103 / 0.0186 / 0.0912 | 0.0072 / 0.0625 / 0.5369  |
+
+## <a name="jwt"><h1>JWT</h1></a>
 
 JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. Although JWTs can be encrypted to also provide secrecy between parties, we will focus on signed tokens.
 
