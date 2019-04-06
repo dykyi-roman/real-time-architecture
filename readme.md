@@ -14,9 +14,9 @@
 
 [WebRTC](#seven)
 
-[JWT](#jwt)
-
 [Benchmark](#benchmark)
+
+[JWT](#jwt)
 
 ## <a name="one"><h1>Mercure (SSE)</h1></a>
 
