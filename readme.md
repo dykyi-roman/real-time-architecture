@@ -164,6 +164,16 @@ Documentation: https://webrtc.org/
 | Pusher (Websoket)     |  1.0816 / 7.8452 / 79.8540| 0.6328 / 7.6503 / 73.116  |
 | RabbitMQ(tcp)         |  0.0103 / 0.0186 / 0.0912 | 0.0072 / 0.0625 / 0.5369  |
 
+## Stress testing
+
+| n=100, c=100 | CPU      | Memory     | Memory Cached | 
+| ------------ |:--------:| ----------:|--------------:|
+| Centrafugo   |  2.77 %  | 18.30 MB   | 13.0 MB       |
+| Mercure      |  8.37 %  | 33.30 MB   | 25.89 MB      |
+| Redis + PHP  |  21.62 % | 235.96 MB  | 120.15 MB     |
+| Redis + Node |  1.10 %  | 54.68MB    | 1.0 MB        |
+| RabbitMQ     |  6.48 %  | 222.65 MB  | 39.15 MB      |
+
 ## <a name="jwt"><h1>JWT</h1></a>
 
 JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. Although JWTs can be encrypted to also provide secrecy between parties, we will focus on signed tokens.
