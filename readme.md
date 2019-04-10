@@ -141,7 +141,21 @@ RabbitMQ is an open-source message-broker software (sometimes called message-ori
 
 ## <a name="six"><h1>Redis + Node</h1></a>
 
-...
+### Description
+
+Redis - is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker.
+
+Node.js - cross-platform JavaScript run-time environment that executes JavaScript code outside of a browser.
+
+### Pros & Cons
++ Docker image available 
++ Open source (BSD)
++ Simple in usage
++ Connections can be established via TCP/IP
++ Good scale
++ High performance
++ No Session Lock operation 
+- Need a lib
 
 ## <a name="seven"><h1>WebRTC</h1></a>
 
