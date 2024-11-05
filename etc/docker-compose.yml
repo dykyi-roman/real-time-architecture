@@ -1,0 +1,37 @@
+services:
+    web:
+        build:
+            context: containers/nginx
+        container_name: rta-web
+        ports:
+            - "1000:80"
+            - "1001:443"
+        expose:
+            - "1001"
+        volumes:
+            - ../:/var/www/html/code
+            - ./containers/nginx/site.conf:/etc/nginx/conf.d/default.conf
+        links:
+            - php
+        networks:
+            - rta-network
+
+    php:
+        build:
+            context: containers/php
+            args:
+                UID: ${UID:-1000}
+                GID: ${GID:-1000}
+        image: rta-php
+        container_name: rta-php
+        ports:
+            - "${PHP_PORT:-9000}:9000"
+        volumes:
+            - ../:/var/www/html/code
+            - ./containers/php/php.ini:/usr/local/etc/php/php.ini
+        networks:
+            - rta-network
+
+networks:
+    rta-network:
+        driver: bridge

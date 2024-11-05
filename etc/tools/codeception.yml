@@ -1,0 +1,18 @@
+paths:
+    tests: ./../tests
+    output: ./../tests/_output
+    data: ./../tests/_data
+    support: ./../tests/_support
+    envs: ./../tests/_envs
+actor_suffix: Tester
+extensions:
+    enabled:
+        - Codeception\Extension\RunFailed
+coverage:
+    enabled: true
+    show_only_summary: true
+    show_uncovered: false
+    low_limit: 35
+    high_limit: 70
+    include:
+        - ./../src/*
