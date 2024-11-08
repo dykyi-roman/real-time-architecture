@@ -4,12 +4,22 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-
+    pusher_app_id: '%env(PUSHER_APP_ID)%'
+    pusher_app_key: '%env(PUSHER_KEY)%'
+    pusher_app_secret: '%env(PUSHER_SECRET)%'
+    redis_host: '%env(REDIS_HOST)%'
+    redis_port: '%env(REDIS_PORT)%'
 services:
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        bind:
+            $pusherAppId: '%pusher_app_id%'
+            $pusherAppKey: '%pusher_app_key%'
+            $pusherAppSecret: '%pusher_app_secret%'
+            $redisHost: '%redis_host%'
+            $redisPort: '%redis_port%'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
@@ -22,6 +32,9 @@ services:
 
     App\Presentation\Action\:
         resource: '../src/Presentation/Action'
+        tags: ['controller.service_arguments']
+
+#    App\Domain\Notification\PusherPusherDomain: ~
 
 
     # add more service definitions when explicit configuration is needed

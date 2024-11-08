@@ -31,7 +31,15 @@ services:
             - ./containers/php/php.ini:/usr/local/etc/php/php.ini
         networks:
             - rta-network
-
+    redis:
+        image: bitnami/redis
+        container_name: rta-redis
+        environment:
+            - ALLOW_EMPTY_PASSWORD=yes
+        ports:
+            - "6379:6379"
+        networks:
+            - rta-network
 networks:
     rta-network:
         driver: bridge

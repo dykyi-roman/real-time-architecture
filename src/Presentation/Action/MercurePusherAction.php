@@ -3,7 +3,7 @@
 namespace App\Presentation\Action;
 
 use App\Domain\Notification\MercurePusherDomain;
-use App\Responder\NotificationJsonResponse;
+use App\Presentation\Responder\NotificationJsonResponse;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 

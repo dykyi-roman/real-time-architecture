@@ -1,56 +1,46 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domain\VO;
 
-use Immutable\ValueObject\ValueObject;
-
-final class OperationTime extends ValueObject
+final class OperationTime
 {
-    /**
-     * Variable
-     *
-     * @var float |
-     */
-    protected $start;
-    /**
-     * Variable
-     *
-     * @var float |
-     */
-    protected $finish;
+    private $function;
 
-    /**
-     * OperationTime constructor.
-     *
-     * @param float $start
-     * @param float $finish
-     */
-    public function __construct(float $start, float $finish)
-    {
-        $this->withChanged($start, $finish);
-        parent::__construct();
+    public function __construct(
+        callable $function,
+        private readonly int $count
+    ) {
+        $this->function = $function;
     }
 
     /**
-     * @param float $start
-     * @param float $finish
-     *
-     * @return ValueObject
-     * @throws \Immutable\Exception\ImmutableObjectException
+     * @return float
      */
-    public function withChanged(float $start, float $finish): ValueObject
+    public function getExecutionTime(): array
     {
-        return $this->with([
-            'start' => $start,
-            'finish' => $finish,
-        ]);
-    }
+        $loadBefore = sys_getloadavg()[0];
+        $startTime = microtime(true);
+        $startMemory = memory_get_usage();
 
-    /**
-     * @return string
-     */
-    public function getExecutionTime(): string
-    {
-        return round($this->finish - $this->start, 5);
+           if (!is_callable($this->function)) {
+            throw new \InvalidArgumentException("The provided function is not callable.");
+        }
+
+        call_user_func($this->function, $this->count);
+
+        $executionTime = microtime(true) - $startTime;
+        $cpuUsage = round(sys_getloadavg()[0] - $loadBefore, 2);
+        if ($cpuUsage < 0) {
+            $cpuUsage = 0;
+        }
+        $memoryUsed = memory_get_usage() - $startMemory;
+
+        return [
+            'time' => round($executionTime, 2) . ' sec',
+            'cpu' => $cpuUsage . ' %',
+            'memory_used' => $memoryUsed . ' byte',
+        ];
     }
 }

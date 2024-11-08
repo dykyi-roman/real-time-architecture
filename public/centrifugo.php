@@ -2,7 +2,7 @@
 
 require_once "../vendor/autoload.php";
 
-$token = (new \App\Domain\Centrifugo\JWTToken())->generateToken();
+$token = (new \App\Infrastructure\Centrifugo\JWTToken())->generateToken();
 ?>
 
 <html dir="ltr" lang="en">

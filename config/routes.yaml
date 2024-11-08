@@ -1,0 +1,3 @@
+controllers:
+  resource: ../src/Presentation/Action/
+  type: attribute

@@ -2,9 +2,9 @@
 
 namespace App\Domain\Notification;
 
-use App\Domain\Centrifugo\CentrifugoClient;
 use App\Domain\PayloadGenerator;
 use App\Domain\VO\OperationTime;
+use App\Infrastructure\Centrifugo\CentrifugoClient;
 
 final class CentrifugoPusherDomain
 {
