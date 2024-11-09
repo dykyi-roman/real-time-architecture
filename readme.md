@@ -82,8 +82,6 @@ Long Polling is a technique where the client sends a request to the server and w
 
 Easily build scalable realtime graphs, geotracking, multiplayer games, and more in your web and mobile apps with our hosted pub/sub messaging API.
 
-<img src="https://realtimeapi.io/wp-content/uploads/2017/09/trigger_events-1.png" width="350">
-
 ### Pros & Cons
 + No lib nor SDK
 + Max Concurent Connections: 100 - 10 000
@@ -103,8 +101,6 @@ Easily build scalable realtime graphs, geotracking, multiplayer games, and more 
 
 RabbitMQ is an open-source message-broker software (sometimes called message-oriented middleware) that originally implemented the Advanced Message Queuing Protocol (AMQP) and has since been extended with a plug-in architecture to support Streaming Text Oriented Messaging Protocol (STOMP), Message Queuing Telemetry Transport (MQTT), and other protocols.
 
-<img src="https://www.rabbitmq.com/img/tutorials/python-two.png" width="350">
-
 ### Pros & Cons
 + Very fasten
 + High performance
@@ -122,32 +118,22 @@ RabbitMQ is an open-source message-broker software (sometimes called message-ori
 * Component: https://github.com/php-amqplib/php-amqplib
 * Documentation: https://www.rabbitmq.com/documentation.html
 
-## <a name="seven"><h1>WebRTC</h1></a>
-
-### Description
-
-WebRTC (Web Real-Time Communication) is a free, open-source project that provides web browsers and mobile applications with real-time communication (RTC) via simple application programming interfaces (APIs). It allows audio and video communication to work inside web pages by allowing direct peer-to-peer communication. It's suitable for data, audio and video.
-
-### Sources
-
-Documentation: https://webrtc.org/
-
 ## <a name="benchmark"><h1>Benchmark</h1></a>
 
-| n=10, t=sec           | Send (10/100/1000)        | Receive (10/100/1000)     |
-| --------------------- |:-------------------------:| -------------------------:|
-| Centrafugo (Websoket) |  0.0162 / 0.1516 / 1.5486 | 0.0133 / 0.1872 / 2.239   |
-| Mercure (SSE)         |  0.0499 / 0.5267 / 5.3176 | 0.0491 / 0.5456 / 5.5930  |
-| Pusher (Websoket)     |  1.0816 / 7.8452 / 79.8540| 0.6328 / 7.6503 / 73.116  |
-| RabbitMQ(tcp)         |  0.0103 / 0.0186 / 0.0912 | 0.0072 / 0.0625 / 0.5369  |
+| n=10, t=sec           | Send (10/100/1000)        |
+| --------------------- |:-------------------------:|
+| Centrafugo (Websoket) |  0.0162 / 0.1516 / 1.5486 |
+| Mercure (SSE)         |  0.0499 / 0.5267 / 5.3176 |
+| Pusher (Websoket)     |  1.0816 / 7.8452 / 79.8540|
+| RabbitMQ(tcp)         |  0.0103 / 0.0186 / 0.0912 |
 
 ## Stress testing
 
-| n=100, c=100 | CPU      | Memory     | Memory Cached | 
-| ------------ |:--------:| ----------:|--------------:|
-| Centrafugo   |  2.77 %  | 18.30 MB   | 13.0 MB       |
-| Mercure      |  8.37 %  | 33.30 MB   | 25.89 MB      |
-| RabbitMQ     |  6.48 %  | 222.65 MB  | 39.15 MB      |
+| n=100, c=100 |  CPU   | Memory     |
+| ------------ |:------:| ----------:|
+| Centrafugo   | 1.77 % | 18.30 MB   |
+| Mercure      | 1.37 % | 33.30 MB   |
+| RabbitMQ     | 1.48 % | 222.65 MB  |
 
 ## <a name="jwt"><h1>JWT</h1></a>
 
