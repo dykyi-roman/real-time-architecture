@@ -9,7 +9,7 @@ use App\Domain\VO\OperationTime;
 use Symfony\Component\Mercure\HubInterface;
 use Symfony\Component\Mercure\Update;
 
-final readonly class MercurePusherDomain
+final readonly class MercurePusher
 {
     private const TOPICS = 'chat';
 

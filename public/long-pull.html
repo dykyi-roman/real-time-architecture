@@ -1,0 +1,40 @@
+<html dir="ltr"
+      lang="en">
+    <head>
+        <meta charset="utf8">
+        <title>Mercure</title>
+        <script>
+            function startLongPolling() {
+                const url = 'http://0.0.0.0:1000/long-pull/push/5';
+                fetch(url)
+                    .then(response => response.json())  // Parse the JSON response
+                    .then(data => {
+                        // Handle the response data
+                        console.log("Received data:", data.message);
+
+                        // Do something with the data (e.g., display it in the UI)
+                        if (data.message === "New data received!") {
+                            alert("New data is available!");
+                        } else {
+                            alert("No new data.");
+                        }
+
+                        // Restart long-polling after receiving a response
+                        startLongPolling();
+                    })
+                    .catch(error => {
+                        console.error('Error with long polling request:', error);
+                        setTimeout(startLongPolling, 5000); // Retry after some time if there's an error
+                    });
+            }
+
+        </script>
+    </head>
+
+    <body class="loading">
+        <h1>Long pull</h1>
+        <div id="div1"></div>
+        <button onclick="startLongPolling()">Start</button>
+    </body>
+</html>
+

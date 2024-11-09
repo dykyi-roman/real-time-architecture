@@ -7,7 +7,7 @@ use App\Domain\VO\OperationTime;
 use Pusher\Pusher;
 use Pusher\PusherException;
 
-final class PusherPusherDomain
+final class PusherPusher
 {
     public function __construct(
         private readonly PayloadGenerator $payload,

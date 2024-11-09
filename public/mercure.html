@@ -26,6 +26,14 @@
             eventSource.onerror = (error) => {
                 console.error("EventSource error:", error);
             };
+
+            function getCalculation(timeArr) {
+
+                if (timeArr !== undefined || timeArr.length !== 0) {
+                    console.log(timeArr.length);
+                    document.getElementById("div1").innerHTML = "Array length: " + timeArr.length;
+                }
+            }
         </script>
     </head>
 
