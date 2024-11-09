@@ -1,10 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Presentation\Action;
 
 use App\Domain\Notification\MercurePusherDomain;
 use App\Presentation\Responder\NotificationJsonResponse;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -12,17 +13,12 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 final class MercurePusherAction
 {
-    /**
-     * @param int                      $count
-     * @param MercurePusherDomain      $domain
-     * @param NotificationJsonResponse $response
-     *
-     * @return JsonResponse
-     *
-     * @Route("/mercure/push/{count}", name="mercure_pusher")
-     */
-    public function __invoke(int $count, MercurePusherDomain $domain, NotificationJsonResponse $response)
-    {
+    #[Route('/mercure/push/{count}', name: 'mercure_pusher')]
+    public function __invoke(
+        int $count,
+        MercurePusherDomain $domain,
+        NotificationJsonResponse $response,
+    ): NotificationJsonResponse {
         return $response($domain($count));
     }
 }

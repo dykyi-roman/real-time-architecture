@@ -31,13 +31,19 @@ services:
             - ./containers/php/php.ini:/usr/local/etc/php/php.ini
         networks:
             - rta-network
-    redis:
-        image: bitnami/redis
-        container_name: rta-redis
+    mercure:
+        image: dunglas/mercure
+        container_name: rta-mercure
         environment:
-            - ALLOW_EMPTY_PASSWORD=yes
+            SERVER_NAME: 'http://127.0.0.1'
+            MERCURE_SUBSCRIBER_JWT_KEY: '!ChangeThisMercureHubJWTSecretKey!'
+            MERCURE_PUBLISHER_JWT_KEY: '!ChangeThisMercureHubJWTSecretKey!'
+            MERCURE_EXTRA_DIRECTIVES: |
+                cors_origins http://127.0.0.1:80 http://0.0.0.0:1000
+                anonymous
+                demo
         ports:
-            - "6379:6379"
+            - 80:80
         networks:
             - rta-network
 networks:

@@ -33,9 +33,3 @@ services:
     App\Presentation\Action\:
         resource: '../src/Presentation/Action'
         tags: ['controller.service_arguments']
-
-#    App\Domain\Notification\PusherPusherDomain: ~
-
-
-    # add more service definitions when explicit configuration is needed
-    # please note that last definitions always *replace* previous ones
