@@ -15,7 +15,6 @@ services:
             - php
         networks:
             - rta-network
-
     php:
         build:
             context: containers/php
@@ -60,6 +59,33 @@ services:
         command: centrifugo -c config.json
         networks:
             - rta-network
+    redis:
+        image: redis:latest
+        container_name: rta-redis
+        ports:
+            - "6379:6379"
+        volumes:
+            - redis_data:/data
+        restart: always
+        networks:
+            - rta-network
+    rabbitmq:
+        build:
+            context: ./containers/rabbitmq
+            dockerfile: Dockerfile
+        container_name: rta-rabbitmq
+        environment:
+            - RABBITMQ_DEFAULT_USER=user
+            - RABBITMQ_DEFAULT_PASS=user
+        ports:
+            - "5672:5672"
+            - "15674:15674"
+        networks:
+            - rta-network
+
+volumes:
+    redis_data:
+
 networks:
     rta-network:
         external: true

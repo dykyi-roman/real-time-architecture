@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Domain\Notification;
 
 use App\Domain\PayloadGenerator;
@@ -7,25 +9,17 @@ use App\Domain\VO\OperationTime;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
-final class RabbitMQPusher
+final readonly class RabbitMQPusher
 {
     private const KEY = 'notification';
 
-    /**
-     * Variable
-     *
-     * @var PayloadGenerator |
-     */
-    private $payload;
-
-    /**
-     * SymfonyPusherDomain constructor.
-     *
-     * @param PayloadGenerator $payload
-     */
-    public function __construct(PayloadGenerator $payload)
-    {
-        $this->payload = $payload;
+    public function __construct(
+        private PayloadGenerator $payload,
+        private string $rabbitMqHost,
+        private string $rabbitMqPort,
+        private string $rabbitMqUser,
+        private string $rabbitMqPassword,
+    ) {
     }
 
     /**
@@ -35,26 +29,26 @@ final class RabbitMQPusher
      */
     public function __invoke(int $count): OperationTime
     {
-        $startTime = microtime(true);
+        return new OperationTime(
+            function (int $count): void {
+                $connection = new AMQPStreamConnection(
+                    $this->rabbitMqHost,
+                    $this->rabbitMqPort,
+                    $this->rabbitMqUser,
+                    $this->rabbitMqPassword,
+                );
+                $channel = $connection->channel();
 
-        $connection = new AMQPStreamConnection(
-            $_SERVER['RABBIT_MQ_HOST'],
-            $_SERVER['RABBIT_MQ_PORT'],
-            $_SERVER['RABBIT_MQ_USER'],
-            $_SERVER['RABBIT_MQ_PASSWORD']
+                $i = 1;
+                while ($i <= $count) {
+                    $msg = new AMQPMessage($this->payload->generateRequest());
+                    $channel->basic_publish($msg, '', self::KEY);
+                    $i++;
+                }
+
+                $channel->close();
+                $connection->close();
+            }, $count
         );
-        $channel = $connection->channel();
-
-        $i = 1;
-        while ($i <= $count) {
-            $msg = new AMQPMessage($this->payload->generateRequest());
-            $channel->basic_publish($msg, '', self::KEY);
-            $i++;
-        }
-
-        $channel->close();
-        $connection->close();
-
-        return new OperationTime($startTime, microtime(true));
     }
 }

@@ -44,7 +44,9 @@ RUN docker-php-ext-install -j$(nproc) iconv \
         && docker-php-ext-install gd \
         && docker-php-ext-enable gd \
         && docker-php-ext-install pdo_mysql \
-        && docker-php-ext-enable pdo_mysql
+        && docker-php-ext-enable pdo_mysql \
+        && docker-php-ext-install bcmath \
+        && docker-php-ext-enable bcmath
 
 RUN pecl install xdebug && \
     docker-php-ext-enable xdebug

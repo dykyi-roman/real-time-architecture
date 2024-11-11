@@ -1,28 +1,21 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Presentation\Action;
 
-use App\Domain\Notification\RabbitMQPusherDomain;
+use App\Domain\Notification\RabbitMQPusher;
 use App\Presentation\Responder\NotificationJsonResponse;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * @example https://redis.io/commands/blpop
- */
 final class RabbitMQPusherAction
 {
-    /**
-     * @param int                      $count
-     * @param RabbitMQPusherDomain     $domain
-     * @param NotificationJsonResponse $response
-     *
-     * @return JsonResponse
-     *
-     * @Route("/rabbitmq/push/{count}", name="rabbitmq_pusher")
-     */
-    public function __invoke(int $count, RabbitMQPusherDomain $domain, NotificationJsonResponse $response)
-    {
+    #[Route('/rabbitmq/push/{count}', name: 'rabbitmq_pusher')]
+    public function __invoke(
+        int $count,
+        RabbitMQPusher $domain,
+        NotificationJsonResponse $response
+    ): NotificationJsonResponse {
         return $response($domain($count));
     }
 }

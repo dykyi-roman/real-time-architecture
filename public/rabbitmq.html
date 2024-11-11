@@ -27,18 +27,12 @@
              });
         }
 
-        //Send a message to the chat queue
-        function sendMsg() {
-            var msg = document.getElementById('msg').value;
-            client.send('/exchange/web/chat', {'content-type': 'text/plain'}, msg);
-        }
-
         function onError(e) {
             console.log('STOMP ERROR', e);
         }
 
         function connect() {
-            // var ws = new SockJS("http://127.0.0.1:15674/stomp");
+            // var ws = new SockJS("http://127.0.0.1:15674/stomp"); TODO: Need to fix CORS
             var ws = new WebSocket('ws://127.0.0.1:15674/ws');
             client = Stomp.over(ws);
 
@@ -64,11 +58,8 @@
 <body>
     <h1>RabbitMQ</h1>
     <div id="div1"></div>
-    <button id="connect"
-            onclick=connect();>Connect
-    </button>
-    <button id="disconnect"
-            onclick=disconnect();>Disconnect
+    <button id="connect" onclick=connect();>Connect</button>
+    <button id="disconnect" onclick=disconnect();>Disconnect
     </button>
 
     <button onclick="getCalculation()">Calculate</button>
