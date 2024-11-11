@@ -1,39 +1,30 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Centrifugo;
 
-/**
- * Class JWTToken
- */
 final class JWTToken
 {
-    /**
-     * @todo Move to .env file
-     */
-    private const TOKEN = 'my-secret-token';
-
-    /**
-     * @param int   $userId
-     * @param array $info
-     *
-     * @return string
-     */
-    public function generateToken(int $userId = 0, array $info = []): string
+    public function generateToken(int $userId = 0, array $permissions = []): string
     {
         $header = ['typ' => 'JWT', 'alg' => 'HS256'];
-        $payload = ['sub' => (string)$userId, 'info' => $info];
+        $payload = [
+            'sub' => (string)$userId,
+            'permissions' => $permissions,
+        ];
+
         $segments = [];
         $segments[] = $this->urlsafeB64Encode(json_encode($header));
         $segments[] = $this->urlsafeB64Encode(json_encode($payload));
         $signing_input = implode('.', $segments);
-
-        $signature = $this->sign($signing_input, self::TOKEN);
+        $signature = $this->sign($signing_input, 'my-secret-token');
         $segments[] = $this->urlsafeB64Encode($signature);
 
         return implode('.', $segments);
     }
 
-    private function urlsafeB64Encode(string $input)
+    private function urlsafeB64Encode(string $input): array|string
     {
         return str_replace('=', '', strtr(base64_encode($input), '+/', '-_'));
     }

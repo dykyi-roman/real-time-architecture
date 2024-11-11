@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Infrastructure\Centrifugo;
 
 use App\Domain\CentrifugoInterface;
@@ -9,24 +11,10 @@ use App\Infrastructure\Centrifugo\Response\ResponseResult;
 use App\Infrastructure\GuzzleClient\DataExtractor\ResponseDataExtractor;
 use App\Infrastructure\GuzzleClient\GuzzleClient;
 
-/**
- * Class CentrifugoClient
- */
 final class CentrifugoClient implements CentrifugoInterface
 {
-    /**
-     * Variable
-     *
-     * @var GuzzleClient |
-     */
-    private $client;
+    private GuzzleClient $client;
 
-    /**
-     * CentrifugoClient constructor.
-     *
-     * @param string $host
-     * @param string $apiKey
-     */
     public function __construct(string $host, string $apiKey = '')
     {
         $headers = [
@@ -117,13 +105,6 @@ final class CentrifugoClient implements CentrifugoInterface
         return $this->buildRequest('info');
     }
 
-    /**
-     * @param string $method
-     * @param array  $params
-     * @param string $uri
-     *
-     * @return ResponseInterface
-     */
     private function buildRequest(string $method, array $params = [], $uri = '/api'): ResponseInterface
     {
         $response = $this->client->post([

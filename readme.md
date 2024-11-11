@@ -10,8 +10,6 @@
 
 [RabbitMQ (STOMP)](#five)
 
-[Benchmark](#benchmark)
-
 [JWT](#jwt)
 
 ## <a name="one"><h1>Mercure (SSE)</h1></a>
@@ -19,8 +17,6 @@
 ### Description
 
 Mercure is a protocol allowing to push data updates to web browsers and other HTTP clients in a convenient, fast, reliable and battery-efficient way. It is especially useful to publish real-time updates of resources served through web APIs, to reactive web and mobile apps.
-
-<img src="https://github.com/dunglas/mercure/raw/master/spec/subscriptions.png" width="350">
 
 ### Pros & Cons
 
@@ -117,23 +113,6 @@ RabbitMQ is an open-source message-broker software (sometimes called message-ori
 * Website: https://www.rabbitmq.com/
 * Component: https://github.com/php-amqplib/php-amqplib
 * Documentation: https://www.rabbitmq.com/documentation.html
-
-## <a name="benchmark"><h1>Benchmark</h1></a>
-
-| n=10, t=sec           | Send (10/100/1000)        |
-| --------------------- |:-------------------------:|
-| Centrafugo (Websoket) |  0.0162 / 0.1516 / 1.5486 |
-| Mercure (SSE)         |  0.0499 / 0.5267 / 5.3176 |
-| Pusher (Websoket)     |  1.0816 / 7.8452 / 79.8540|
-| RabbitMQ(tcp)         |  0.0103 / 0.0186 / 0.0912 |
-
-## Stress testing
-
-| n=100, c=100 |  CPU   | Memory     |
-| ------------ |:------:| ----------:|
-| Centrafugo   | 1.77 % | 18.30 MB   |
-| Mercure      | 1.37 % | 33.30 MB   |
-| RabbitMQ     | 1.48 % | 222.65 MB  |
 
 ## <a name="jwt"><h1>JWT</h1></a>
 

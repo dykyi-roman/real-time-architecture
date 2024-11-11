@@ -4,10 +4,13 @@ namespace App\Domain\Notification;
 
 use App\Domain\PayloadGenerator;
 use App\Domain\VO\OperationTime;
-use App\Infrastructure\Centrifugo\CentrifugoClient;
+use PhpAmqpLib\Connection\AMQPStreamConnection;
+use PhpAmqpLib\Message\AMQPMessage;
 
-final class CentrifugoPusherDomain
+final class RabbitMQPusher
 {
+    private const KEY = 'notification';
+
     /**
      * Variable
      *
@@ -34,14 +37,23 @@ final class CentrifugoPusherDomain
     {
         $startTime = microtime(true);
 
-        $host = $_SERVER['CENTRIFUGO_URL'] . ':' . $_SERVER['CENTRIFUGO_PORT'];
-        $client = new CentrifugoClient($host, $_SERVER['CENTRIFUGO_API_KEY']);
+        $connection = new AMQPStreamConnection(
+            $_SERVER['RABBIT_MQ_HOST'],
+            $_SERVER['RABBIT_MQ_PORT'],
+            $_SERVER['RABBIT_MQ_USER'],
+            $_SERVER['RABBIT_MQ_PASSWORD']
+        );
+        $channel = $connection->channel();
 
         $i = 1;
         while ($i <= $count) {
-            $client->publish('public', [$this->payload->generateRequest()]);
+            $msg = new AMQPMessage($this->payload->generateRequest());
+            $channel->basic_publish($msg, '', self::KEY);
             $i++;
         }
+
+        $channel->close();
+        $connection->close();
 
         return new OperationTime($startTime, microtime(true));
     }

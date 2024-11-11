@@ -9,6 +9,9 @@ parameters:
     pusher_app_secret: '%env(PUSHER_SECRET)%'
     redis_host: '%env(REDIS_HOST)%'
     redis_port: '%env(REDIS_PORT)%'
+    centrifugo_api_key: '%env(CENTRIFUGO_API_KEY)%'
+    centrifugo_url: '%env(CENTRIFUGO_URL)%'
+    centrifugo_port: '%env(CENTRIFUGO_PORT)%'
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -20,6 +23,8 @@ services:
             $pusherAppSecret: '%pusher_app_secret%'
             $redisHost: '%redis_host%'
             $redisPort: '%redis_port%'
+            $centrifugoApiKey: '%centrifugo_api_key%'
+            $centrifugoHost: '%centrifugo_url%:%centrifugo_port%'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name

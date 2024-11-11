@@ -1,8 +1,9 @@
 <?php
 
+use App\Infrastructure\Centrifugo\JWTToken;
+
 require_once "../vendor/autoload.php";
 
-$token = (new \App\Infrastructure\Centrifugo\JWTToken())->generateToken();
 ?>
 
 <html dir="ltr" lang="en">

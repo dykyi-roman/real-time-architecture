@@ -46,6 +46,21 @@ services:
             - 80:80
         networks:
             - rta-network
+    centrifugo:
+        image: centrifugo/centrifugo:v5
+        container_name: rta-centrifugo
+        environment:
+            - CENTRIFUGO_API_KEY=my-api-key
+            - CENTRIFUGO_ADMIN_PASSWORD=admin
+            - CENTRIFUGO_ADMIN_SECRET=admin
+        ports:
+            - "8000:8000"
+        volumes:
+            - ./config.json:/centrifugo/config.json
+        command: centrifugo -c config.json
+        networks:
+            - rta-network
 networks:
     rta-network:
+        external: true
         driver: bridge
