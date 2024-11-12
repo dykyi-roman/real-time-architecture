@@ -1,4 +1,4 @@
-FROM php:8.3-fpm
+FROM php:8.2-fpm
 
 ARG UID
 ARG GID
@@ -8,6 +8,7 @@ ENV GID=${GID}
 
 WORKDIR /var/www/html/code
 
+# Install dependencies
 RUN apt-get update && apt-get install -y \
         libzip-dev \
         libmcrypt-dev \
@@ -21,6 +22,7 @@ RUN apt-get update && apt-get install -y \
         libssh-dev \
         libgeoip-dev \
         libmemcached-dev \
+        librdkafka-dev \
         openssl \
         openssh-server \
         nano \
@@ -28,8 +30,10 @@ RUN apt-get update && apt-get install -y \
         libpng-dev \
         && rm -rf /var/lib/apt/lists/*
 
+# Install PHP build dependencies
 RUN apt-get install -y $PHPIZE_DEPS
 
+# Install PHP extensions
 RUN docker-php-ext-install -j$(nproc) iconv \
         && docker-php-ext-install pcntl \
         && docker-php-ext-configure intl \
@@ -48,14 +52,22 @@ RUN docker-php-ext-install -j$(nproc) iconv \
         && docker-php-ext-install bcmath \
         && docker-php-ext-enable bcmath
 
+# Install xdebug via PECL
 RUN pecl install xdebug && \
     docker-php-ext-enable xdebug
 
+# Install php-rdkafka via PECL
+RUN pecl install rdkafka && \
+    docker-php-ext-enable rdkafka
+
+# Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
+# Create user and configure PHP-FPM
 RUN groupadd --gid ${GID} rta \
     && useradd --gid ${GID} --uid ${UID} rta \
     && sed -i "s/user = www-data/user = rta/g" /usr/local/etc/php-fpm.d/www.conf \
     && sed -i "s/group = www-data/group = rta/g" /usr/local/etc/php-fpm.d/www.conf
 
+# Switch to non-root user
 USER rta

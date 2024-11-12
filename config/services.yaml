@@ -46,3 +46,14 @@ services:
     App\Presentation\Action\:
         resource: '../src/Presentation/Action'
         tags: ['controller.service_arguments']
+
+    App\Domain\ProducerFactory: ~
+
+    RdKafka\Producer:
+        factory: [ '@App\Domain\ProducerFactory', 'create' ]
+        arguments:
+            - '%env(KAFKA_HOST)%'
+
+    App\Domain\KafkaProducer:
+        arguments:
+            $producer: '@RdKafka\Producer'
