@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Domain;
+namespace App\Infrastructure\Kafka;
 
 use RdKafka\Producer;
 use RdKafka\ProducerTopic;

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Domain\Notification;
 
-use App\Domain\KafkaProducer;
 use App\Domain\PayloadGenerator;
 use App\Domain\VO\OperationTime;
+use App\Infrastructure\Kafka\KafkaProducer;
 
 final readonly class KafkaPusher
 {
