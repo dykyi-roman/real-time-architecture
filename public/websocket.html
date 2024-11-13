@@ -1,0 +1,29 @@
+<html dir="ltr"
+      lang="en">
+<head>
+    <meta charset="utf8">
+    <title>WebSocket</title>
+    <script>
+        const timeArr = [];
+        const socket = new WebSocket('ws://127.0.0.1:8081');
+        socket.onopen = function() {
+            console.log('Connected to WebSocket server');
+            socket.send('Hello, server!');
+        };
+
+        socket.onmessage = function(event) {
+            console.log('Received message from server:', event.data);
+        };
+
+        socket.onerror = function(error)
+        {
+            console.error('WebSocket Error:', error);
+        };
+    </script>
+</head>
+
+<body class="loading">
+<h1>WebSocket</h1>
+</body>
+</html>
+

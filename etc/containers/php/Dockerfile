@@ -53,8 +53,8 @@ RUN docker-php-ext-install -j$(nproc) iconv \
         && docker-php-ext-enable bcmath
 
 # Install xdebug via PECL
-RUN pecl install xdebug && \
-    docker-php-ext-enable xdebug
+#RUN #pecl install xdebug && \
+#    docker-php-ext-enable xdebug
 
 # Install php-rdkafka via PECL
 RUN pecl install rdkafka && \
