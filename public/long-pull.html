@@ -5,19 +5,11 @@
         <title>Long pull</title>
         <script>
             function startLongPolling() {
-                const url = 'http://0.0.0.0:1000/long-pull/push/5';
+                const url = 'http://127.0.0.1:1000/long-pull/push/10';
                 fetch(url)
                     .then(response => response.json())  // Parse the JSON response
                     .then(data => {
-                        // Handle the response data
-                        console.log("Received data:", data.message);
-
-                        // Do something with the data (e.g., display it in the UI)
-                        if (data.message === "New data received!") {
-                            alert("New data is available!");
-                        } else {
-                            alert("No new data.");
-                        }
+                        console.log("Received data:", data);
 
                         // Restart long-polling after receiving a response
                         startLongPolling();

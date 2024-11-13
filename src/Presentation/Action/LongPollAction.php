@@ -11,8 +11,11 @@ use Symfony\Component\Routing\Annotation\Route;
 final class LongPollAction
 {
     #[Route('/long-pull/push/{count}', name: 'long-pull_pusher')]
-    public function __invoke(int $count, LongPull $domain, NotificationJsonResponse $response): NotificationJsonResponse
-    {
+    public function __invoke(
+        int $count,
+        LongPull $domain,
+        NotificationJsonResponse $response
+    ): NotificationJsonResponse {
         return $response($domain($count));
     }
 }
