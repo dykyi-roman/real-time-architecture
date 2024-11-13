@@ -1,0 +1,38 @@
+<html dir="ltr"
+      lang="en">
+    <head>
+        <meta charset="utf8">
+        <title>SSE</title>
+        <script>
+            const timeArr = [];
+            document.addEventListener('DOMContentLoaded', function() {
+                    const eventSource = new EventSource('http://127.0.0.1:1000/sse/push/10');
+
+                eventSource.onmessage = function(event) {
+                    const data = JSON.parse(event.data);
+                    console.log('Message from server:', data);
+                    timeArr.push(new Date().getTime());
+                };
+
+                eventSource.onerror = function() {
+                    console.error('SSE error occurred.');
+                };
+            });
+
+            function getCalculation(timeArr) {
+
+                if (timeArr !== undefined || timeArr.length !== 0) {
+                    console.log(timeArr.length);
+                    document.getElementById("div1").innerHTML = "Array length: " + timeArr.length;
+                }
+            }
+        </script>
+    </head>
+
+    <body class="loading">
+        <h1>SSE</h1>
+        <div id="div1"></div>
+        <button onclick="getCalculation(timeArr)">Calculate</button>
+    </body>
+</html>
+

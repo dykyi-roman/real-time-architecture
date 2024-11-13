@@ -21,6 +21,7 @@
                 // You can parse JSON data if the updates are in JSON format
                 const data = JSON.parse(event.data);
                 console.log("Parsed data:", data);
+                timeArr.push(new Date().getTime());
             };
 
             eventSource.onerror = (error) => {
