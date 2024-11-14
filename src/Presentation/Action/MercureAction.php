@@ -4,20 +4,19 @@ declare(strict_types=1);
 
 namespace App\Presentation\Action;
 
-use App\Domain\Notification\PusherPusher;
+use App\Domain\Notification\MercurePusher;
 use App\Presentation\Responder\NotificationJsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @example https://pusher.com/docs
- * @example https://dashboard.pusher.com/apps/747455/getting_started
+ * @see https://symfony.com/blog/symfony-gets-real-time-push-capabilities
  */
-final class PusherPusherAction
+final class MercureAction
 {
-    #[Route('/pusher/push/{count}', name: 'pusher_pusher')]
+    #[Route('/mercure/push/{count}', name: 'mercure_pusher')]
     public function __invoke(
         int $count,
-        PusherPusher $domain,
+        MercurePusher $domain,
         NotificationJsonResponse $response,
     ): NotificationJsonResponse {
         return $response($domain($count));

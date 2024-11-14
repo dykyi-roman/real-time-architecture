@@ -4,20 +4,20 @@ declare(strict_types=1);
 
 namespace App\Presentation\Action;
 
-use App\Domain\Notification\MercurePusher;
+use App\Domain\Notification\GraphQLPusher;
 use App\Presentation\Responder\NotificationJsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @example https://symfony.com/blog/symfony-gets-real-time-push-capabilities
+ * @see https://github.com/webonyx/graphql-php
  */
-final class MercurePusherAction
+final class GraphQLAction
 {
-    #[Route('/mercure/push/{count}', name: 'mercure_pusher')]
+    #[Route('/graphql/push/{count}', name: 'graphql_pusher')]
     public function __invoke(
         int $count,
-        MercurePusher $domain,
-        NotificationJsonResponse $response,
+        GraphQLPusher $domain,
+        NotificationJsonResponse $response
     ): NotificationJsonResponse {
         return $response($domain($count));
     }

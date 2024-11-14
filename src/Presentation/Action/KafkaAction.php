@@ -8,7 +8,7 @@ use App\Domain\Notification\KafkaPusher;
 use App\Presentation\Responder\NotificationJsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class KafkaPusherAction
+final class KafkaAction
 {
     #[Route('/kafka/push/{count}', name: 'kafka_pusher')]
     public function __invoke(

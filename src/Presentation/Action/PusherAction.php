@@ -4,17 +4,21 @@ declare(strict_types=1);
 
 namespace App\Presentation\Action;
 
-use App\Domain\Notification\RabbitMQPusher;
+use App\Domain\Notification\PusherPusher;
 use App\Presentation\Responder\NotificationJsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
-final class RabbitMQPusherAction
+/**
+ * @see https://pusher.com/docs
+ * @see https://dashboard.pusher.com/apps/747455/getting_started
+ */
+final class PusherAction
 {
-    #[Route('/rabbitmq/push/{count}', name: 'rabbitmq_pusher')]
+    #[Route('/pusher/push/{count}', name: 'pusher_pusher')]
     public function __invoke(
         int $count,
-        RabbitMQPusher $domain,
-        NotificationJsonResponse $response
+        PusherPusher $domain,
+        NotificationJsonResponse $response,
     ): NotificationJsonResponse {
         return $response($domain($count));
     }
