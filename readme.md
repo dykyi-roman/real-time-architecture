@@ -1,36 +1,10 @@
 # Web Real-Time Architecture
 
-[Mercure (SSE)](#one)
-
-[Centrifugo (WebSocket)](#two)
-
-[Long Polling + Data Storage](#three)
-
-[Pusher.com](#four)
-
-[RabbitMQ (STOMP)](#five)
-
-[JWT](#jwt)
-
-## <a name="one"><h1>Mercure (SSE)</h1></a>
+## <h1>Mercure (SSE)</h1>
 
 ### Description
 
 Mercure is a protocol allowing to push data updates to web browsers and other HTTP clients in a convenient, fast, reliable and battery-efficient way. It is especially useful to publish real-time updates of resources served through web APIs, to reactive web and mobile apps.
-
-### Pros & Cons
-
-+ Docker image avalible
-+ Open source (AGPL)
-+ Fast, written in Go
-+ No lib nor SDK
-+ Automatic HTTP/2 and HTTPS support
-+ CORS support, CSRF protection mechanism
-+ JWT-based authorization
-+ Built-in connection re-establishment 
-+ Supports GraphQL
-+ Message encryption support
-+ Can work with old browsers (IE7+) Using EventSource polifill
 
 ### Sources
 * Component: https://github.com/dunglas/mercure
@@ -38,7 +12,7 @@ Mercure is a protocol allowing to push data updates to web browsers and other HT
 * Website: https://mercure.rocks
 * Demo: https://demo.mercure.rocks/
 
-## <a name="two"><h1>Centrifugo (WebSocket)</h1></a>
+## <h1>Centrifugo (WebSocket)</h1>
 
 ### Description
 
@@ -46,25 +20,31 @@ Centrifugo - is a real-time messaging server and its friends. Centrifugal organi
 
 <img src="https://github.com/dykyi-roman/centrifugo-service/blob/master/docs/image.png" width="350">
 
-### Pros & Cons
-+ Docker image avalible
-+ Open source (MIT)
-+ No lib nor SDK
-+ JWT-based authorization
-+ Single persistent connection
-+ Scale with Redis PUB/SUB, Redis Sentinel for high availability
-+ History information for channels
-+ Events channels support
-+ Automatically recover missed messages
-+ Available dashboard
-
 ### Sources
 * Component: https://github.com/centrifugal/centrifugo
 * Documentation v1: https://centrifugal.github.io/centrifugo/
 * Documentation v2: https://github.com/oleh-ozimok/php-centrifugo
 * Demo: https://centrifugo.herokuapp.com/#/ && https://centrifugo2.herokuapp.com/
 
-## <a name="three"><h1>Long Polling + Data Storage</h1></a>
+## <h1>Websocket</h1>
+
+### Description
+
+WebSocket is a communication protocol that provides full-duplex communication channels over a single, long-lived TCP connection. Unlike traditional HTTP, which follows a request-response model, WebSocket allows for persistent connections, enabling real-time data exchange between the client and server.
+
+## <h1>SSE</h1>
+
+### Description
+
+Server-Sent Events (SSE) is a technology that allows a server to send real-time updates to the client over HTTP. Unlike WebSockets, SSE is a one-way communication channel from the server to the browser, and it is simpler to implement for use cases like live feeds, notifications, or streaming updates.
+
+## <h1>GraphQL</h1>
+
+### Description
+
+GraphQL is a query language for APIs and a runtime for executing those queries by using a type system you define for your data. Developed by Facebook in 2012 and open-sourced in 2015, it offers a more flexible and efficient alternative to REST.
+
+## <h1>Long Polling + Data Storage</h1>
 
 ### Description
 
@@ -72,49 +52,41 @@ Centrifugo - is a real-time messaging server and its friends. Centrifugal organi
 
 Long Polling is a technique where the client sends a request to the server and waits for a response. The server holds the request open until it has new data to send back or until a timeout occurs. Long Polling is a low-overhead approach suitable for projects with a low volume of clients and a low frequency of updates.
 
-## <a name="four"><h1>Pusher.com</h1></a>
+## <h1>Pusher</h1>
 
 ### Description
 
 Easily build scalable realtime graphs, geotracking, multiplayer games, and more in your web and mobile apps with our hosted pub/sub messaging API.
-
-### Pros & Cons
-+ No lib nor SDK
-+ Max Concurent Connections: 100 - 10 000
-+ Free Limit per/day: 200 000 - 20 000 000 
-+ SSL Protection
-+ Available support 
-+ Available dashboard
 
 ### Sources
 * Website: www.pusher.com
 * Component: https://github.com/pusher/pusher-http-php
 * Documentation: https://pusher.com/docs
 
-## <a name="five"><h1>RabbiMQ (STOMP)</h1></a>
+## <h1>Redis Pub/Sub</h1>
+
+### Description
+
+Redis Pub/Sub is a messaging pattern provided by Redis, allowing message exchange between producers and consumers in a decoupled way. It is used for real-time messaging systems, notifications, and broadcasting updates to multiple subscribers.
+
+## <h1>RabbiMQ (STOMP)</h1>
 
 ### Description
 
 RabbitMQ is an open-source message-broker software (sometimes called message-oriented middleware) that originally implemented the Advanced Message Queuing Protocol (AMQP) and has since been extended with a plug-in architecture to support Streaming Text Oriented Messaging Protocol (STOMP), Message Queuing Telemetry Transport (MQTT), and other protocols.
-
-### Pros & Cons
-+ Very fasten
-+ High performance
-+ Docker image avalible
-+ Asynchronous messag delivery
-+ Available dashboard
-+ Gateways for AMQP, HTTP, STOMP, and MQTT protocols
-+ Automated connection recovery mechanisms
-+ Need a lib
-+ Difficult to maintain
-+ Not secure (have an open user credential)
 
 ### Sources
 * Website: https://www.rabbitmq.com/
 * Component: https://github.com/php-amqplib/php-amqplib
 * Documentation: https://www.rabbitmq.com/documentation.html
 
-## <a name="jwt"><h1>JWT</h1></a>
+## <h1>Kafka</h1>
+
+### Description
+
+Kafka, officially known as Apache Kafka, is an open-source distributed event streaming platform. Originally developed by LinkedIn and later donated to the Apache Software Foundation, Kafka is designed to handle real-time data feeds. It is used for building real-time data pipelines and streaming applications.
+
+## <h1>JWT</h1>
 
 JSON Web Token (JWT) is an open standard (RFC 7519) that defines a compact and self-contained way for securely transmitting information between parties as a JSON object. Although JWTs can be encrypted to also provide secrecy between parties, we will focus on signed tokens.
 
