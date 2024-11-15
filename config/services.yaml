@@ -17,6 +17,7 @@ parameters:
     rabbit_mq_user: '%env(RABBIT_MQ_USER)%'
     rabbit_mq_password: '%env(RABBIT_MQ_PASSWORD)%'
     websocket_server_host: '%env(WEBSOCKET_SERVER_HOST)%'
+    websocket_server_port: '%env(WEBSOCKET_SERVER_PORT)%'
     graphql_host: '%env(GRAPHQL_HOST)%'
 services:
     # default configuration for services in *this* file
@@ -35,8 +36,10 @@ services:
             $rabbitMqPort: '%rabbit_mq_port%'
             $rabbitMqUser: '%rabbit_mq_user%'
             $rabbitMqPassword: '%rabbit_mq_password%'
-            $websocketServerHost: '%websocket_server_host%'
+            $websocketServerUrl: '%websocket_server_host%:%websocket_server_port%'
+            $websocketServerPort: '%websocket_server_port%'
             $graphqlHost: '%graphql_host%'
+            $redisUrl: '%redis_host%:%redis_port%'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name

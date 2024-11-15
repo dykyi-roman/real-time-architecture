@@ -19,28 +19,23 @@ use Symfony\Component\Console\Output\OutputInterface;
 )]
 final class WebSocketServerCommand extends Command
 {
-    protected static $defaultName = 'app:server:start';
-
-    private const PORT = 8081;
-
-    public function __construct()
-    {
+    public function __construct(
+        private readonly string $websocketServerPort,
+    ) {
         parent::__construct();
-    }
-
-    protected function configure(): void
-    {
-        $this->setDescription('Start the WebSocket server.');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $output->writeln('Starting WebSocket server...');
-        $server = IoServer::factory(new HttpServer(
-            new WsServer(
-                new WebSocketHandler(),
-            )
-        ), self::PORT);
+        $server = IoServer::factory(
+            new HttpServer(
+                new WsServer(
+                    new WebSocketHandler(),
+                )
+            ),
+            $this->websocketServerPort,
+        );
 
         $server->run();
 

@@ -5,18 +5,15 @@ declare(strict_types=1);
 namespace App\Domain\Notification;
 
 use App\Domain\PayloadGenerator;
+use App\Domain\RedisSubscriber;
 use App\Domain\VO\OperationTime;
-use WebSocket\Client;
 
-final readonly class WebsocketPusher
+final readonly class RedisPusher
 {
-    private Client $webSocketClient;
-
     public function __construct(
         private PayloadGenerator $payload,
-        string $websocketServerUrl,
+        private RedisSubscriber $redisSubscriber,
     ) {
-        $this->webSocketClient = new Client($websocketServerUrl);
     }
 
     public function __invoke(int $count): OperationTime
@@ -24,7 +21,7 @@ final readonly class WebsocketPusher
         return new OperationTime(function (int $count): void {
             $i = 1;
             while ($i <= $count) {
-                $this->webSocketClient->send($this->payload->generateRequest());
+                $this->redisSubscriber->publishMessage('messages', $this->payload->generateRequest());
                 $i++;
             }
         }, $count);
