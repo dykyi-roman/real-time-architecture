@@ -100,7 +100,7 @@ services:
         networks:
             - rta-network
     kafka-ui:
-        container_name: kafka-ui
+        container_name: rta-kafka-ui
         image: 'provectuslabs/kafka-ui:latest'
         ports:
             - "8080:8080"

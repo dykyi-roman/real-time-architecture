@@ -19,6 +19,7 @@ parameters:
     websocket_server_host: '%env(WEBSOCKET_SERVER_HOST)%'
     websocket_server_port: '%env(WEBSOCKET_SERVER_PORT)%'
     graphql_host: '%env(GRAPHQL_HOST)%'
+    kafka_host: '%env(KAFKA_HOST)%'
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -38,6 +39,7 @@ services:
             $rabbitMqPassword: '%rabbit_mq_password%'
             $websocketServerUrl: '%websocket_server_host%:%websocket_server_port%'
             $websocketServerPort: '%websocket_server_port%'
+            $kafkaHost: '%kafka_host%'
             $graphqlHost: '%graphql_host%'
             $redisUrl: '%redis_host%:%redis_port%'
 
@@ -56,11 +58,13 @@ services:
 
     App\Infrastructure\Kafka\ProducerFactory: ~
 
+
     RdKafka\Producer:
         factory: [ '@App\Infrastructure\Kafka\ProducerFactory', 'create' ]
         arguments:
             - '%env(KAFKA_HOST)%'
 
+    App\Domain\MessageProducerInterface: '@App\Infrastructure\Kafka\KafkaProducer'
     App\Infrastructure\Kafka\KafkaProducer:
         arguments:
             $producer: '@RdKafka\Producer'

@@ -11,8 +11,6 @@ use PhpAmqpLib\Message\AMQPMessage;
 
 final readonly class RabbitMQPusher
 {
-    private const KEY = 'notification';
-
     public function __construct(
         private PayloadGenerator $payload,
         private string $rabbitMqHost,
@@ -42,7 +40,7 @@ final readonly class RabbitMQPusher
                 $i = 1;
                 while ($i <= $count) {
                     $msg = new AMQPMessage($this->payload->generateRequest());
-                    $channel->basic_publish($msg, '', self::KEY);
+                    $channel->basic_publish($msg, '', 'notification');
                     $i++;
                 }
 

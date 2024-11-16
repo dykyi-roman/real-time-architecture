@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Presentation\Console;
 
-use App\Domain\WebSocketHandler;
+use App\Infrastructure\WebSocket\WebSocketHandler;
 use Ratchet\Http\HttpServer;
 use Ratchet\Server\IoServer;
 use Ratchet\WebSocket\WsServer;
@@ -14,7 +14,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 #[AsCommand(
-    name: 'app:server:start',
+    name: 'app:websocket:start',
     description: 'This is a start server command'
 )]
 final class WebSocketServerCommand extends Command

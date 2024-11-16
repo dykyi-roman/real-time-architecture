@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Domain\Notification;
 
+use App\Domain\MessageProducerInterface;
 use App\Domain\PayloadGenerator;
 use App\Domain\VO\OperationTime;
-use App\Infrastructure\Kafka\KafkaProducer;
 
 final readonly class KafkaPusher
 {
     public function __construct(
         private PayloadGenerator $payload,
-        private KafkaProducer $producer,
+        private MessageProducerInterface $producer,
     ) {
     }
 

@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Domain\Notification;
 
 use App\Domain\PayloadGenerator;
-use App\Domain\RedisSubscriber;
 use App\Domain\VO\OperationTime;
+use App\Infrastructure\Redis\RedisSubscriber;
 
 final readonly class RedisPusher
 {

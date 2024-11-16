@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Centrifugo;
 
-use App\Domain\CentrifugoInterface;
+use App\Domain\MessagesInterface;
 use App\Infrastructure\Centrifugo\Response\ResponseException;
 use App\Infrastructure\Centrifugo\Response\ResponseInterface;
 use App\Infrastructure\Centrifugo\Response\ResponseResult;
 use App\Infrastructure\GuzzleClient\DataExtractor\ResponseDataExtractor;
 use App\Infrastructure\GuzzleClient\GuzzleClient;
 
-final class CentrifugoClient implements CentrifugoInterface
+final class CentrifugoClient implements MessagesInterface
 {
     private GuzzleClient $client;
 

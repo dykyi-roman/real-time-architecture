@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Presentation\Console;
 
-use App\Infrastructure\Redis\RedisSubscriber;
+use App\Domain\MessageProducerInterface;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -12,13 +12,13 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 #[AsCommand(
-    name: 'app:redis:subscribe',
-    description: 'This is a redis subscriber command'
+    name: 'app:kafka:subscribe',
+    description: 'This is a kafka subscriber command'
 )]
-final class RedisSubscriberCommand extends Command
+final class KafkaSubscriberCommand extends Command
 {
     public function __construct(
-        private readonly RedisSubscriber $redisPubSubPusher,
+        private readonly MessageProducerInterface $messageProducer,
     ) {
         parent::__construct();
     }
@@ -27,10 +27,10 @@ final class RedisSubscriberCommand extends Command
     {
         $this
             ->addArgument(
-                'channel',
+                'topic',
                 InputArgument::REQUIRED,
-                'The name of the Redis channel to subscribe to',
-                'messages',
+                'The name of the Kafka topic to subscribe to',
+                'chat'
             );
     }
 
@@ -38,9 +38,10 @@ final class RedisSubscriberCommand extends Command
     {
         $output->writeln('Starting to subscribe ...');
 
-        $this->redisPubSubPusher->subscribe(
-            $input->getArgument('channel'),
-            function ($message) {
+        $this->messageProducer->consumeMessages(
+            1000,
+            [$input->getArgument('topic')],
+            function (string $message): void {
                 // TODO: To do something with your message
                 echo $message . "\n";
             }
