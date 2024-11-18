@@ -2,19 +2,21 @@
 
 # Routes
 
-| Route                    | Description       |
-|--------------------------|-------------------|
-| /graphql                 | Graphql server    |
-| /mercure/push/{count}    | Push N messages   |
-| /centrifugo/push/{count} | Push N messages   |
-| /pusher/push/{count}     | Push N messages   |
-| /graphql/push/{count}    | Push N messages   |
-| /sse/push/{count}        | Push N messages   |
-| /long-pull/push/{count}  | Push N messages   |
-| /websocket/push/{count}  | Push N messages   |
-| /rabbitmq/push/{count}   | Push N messages   |
-| /kafka/push/{count}      | Push N messages   |
-| /redis/push/{count}      | Push N messages   |
+| Route                    | Description     |
+|--------------------------|-----------------|
+| /soap                    | SOAP server     |
+| /graphql                 | Graphql server  |
+| /soap/push/{count}       | Push N messages |
+| /mercure/push/{count}    | Push N messages |
+| /centrifugo/push/{count} | Push N messages |
+| /pusher/push/{count}     | Push N messages |
+| /graphql/push/{count}    | Push N messages |
+| /sse/push/{count}        | Push N messages |
+| /long-pull/push/{count}  | Push N messages |
+| /websocket/push/{count}  | Push N messages |
+| /rabbitmq/push/{count}   | Push N messages |
+| /kafka/push/{count}      | Push N messages |
+| /redis/push/{count}      | Push N messages |
 
 # Console commands
 
@@ -24,6 +26,14 @@
 | app:rabbitmq:subscribe | rabbitmq subscriber |
 | app:kafka:subscribe    | kafka subscriber    |
 | app:redis:subscribe    | redis subscriber    |
+
+## <h1>SOAP</h1>
+
+<img src="docs/soap.png" width="500" height="300" />
+
+### Description
+
+SOAP (Simple Object Access Protocol) is a protocol used for exchanging structured information in web services. It uses XML for its message format and typically relies on HTTP or SMTP for message negotiation and transmission.
 
 ## <h1>Mercure (SSE)</h1>
 

@@ -28,6 +28,7 @@ RUN apt-get update && apt-get install -y \
         nano \
         git \
         libpng-dev \
+        libxml2-dev \
         && rm -rf /var/lib/apt/lists/*
 
 # Install PHP build dependencies
@@ -52,8 +53,13 @@ RUN docker-php-ext-install -j$(nproc) iconv \
         && docker-php-ext-install bcmath \
         && docker-php-ext-enable bcmath
 
+# Install php-soap
+RUN apt-get update && apt-get install -y libxml2-dev \
+    && docker-php-ext-install soap \
+    && rm -rf /var/lib/apt/lists/*
+
 # Install xdebug via PECL
-#RUN #pecl install xdebug && \
+#RUN pecl install xdebug && \
 #    docker-php-ext-enable xdebug
 
 # Install php-rdkafka via PECL

@@ -8,6 +8,7 @@
         "ext-ctype": "*",
         "ext-iconv": "*",
         "ext-rdkafka": "*",
+        "ext-soap": "*",
         "cboden/ratchet": "*",
         "enqueue/rdkafka": "^0.10.20",
         "php-amqplib/php-amqplib": "^2.0",

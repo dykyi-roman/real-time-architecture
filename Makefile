@@ -31,6 +31,9 @@ prune: ## prune
 enter: ## enter to container
 	docker exec -it $(php) sh
 
+console: ## console command
+	docker exec -it $(php) bash -c "php bin/console $(filter-out $@,$(MAKECMDGOALS))"
+
 ## --
 
 phpcs: ## phpcs

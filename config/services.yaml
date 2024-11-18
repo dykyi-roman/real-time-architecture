@@ -20,6 +20,7 @@ parameters:
     websocket_server_port: '%env(WEBSOCKET_SERVER_PORT)%'
     graphql_host: '%env(GRAPHQL_HOST)%'
     kafka_host: '%env(KAFKA_HOST)%'
+    soap_host: '%env(SOAP_HOST)%'
 services:
     # default configuration for services in *this* file
     _defaults:
@@ -42,6 +43,7 @@ services:
             $kafkaHost: '%kafka_host%'
             $graphqlHost: '%graphql_host%'
             $redisUrl: '%redis_host%:%redis_port%'
+            $soapUrl: '%soap_host%'
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
