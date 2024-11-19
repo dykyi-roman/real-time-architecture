@@ -1,4 +1,4 @@
-# сlient-server interaction way
+# Client-Server interaction way
 
 # Routes
 
