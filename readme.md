@@ -1,4 +1,4 @@
-# Web Real-Time Architecture
+# сlient-server interaction way
 
 # Routes
 
